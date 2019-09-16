@@ -32,8 +32,7 @@ module.exports = (env, args) => {
 				filename: './index.html',
 				template: './src/index.html',
 				chunks: ['main']
-			}),
-			new webpack.SourceMapDevToolPlugin({})
+			})			
 		]
 	}
 
