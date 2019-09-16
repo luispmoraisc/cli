@@ -5,7 +5,7 @@ module.exports = () => {
         "description": "##project_description##",
         "scripts": {
             "local": "webpack --watch --display-error-details --config ./config/webpack.dev --env=./.env --mode development",
-            "build": "webpack --config ./config/webpack.prod --mode production --env=./.env",
+            "build": "rimraf dist && webpack --config ./config/webpack.prod --mode production --env=./.env",
             "test": "./node_modules/.bin/karma start karma.config.js",            
             "docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
         },
