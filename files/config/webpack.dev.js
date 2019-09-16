@@ -26,7 +26,8 @@ module.exports = (env, args) => {
 		module: rules,
 		plugins: [
 			dot,
-			new ExtractTextPlugin('assets/css/[name].[hash:6].css'),
+			// emit css file
+			// new ExtractTextPlugin('assets/css/[name].[hash:6].css'),
 			new HtmlWebpackPlugin({
 				filename: './index.html',
 				template: './src/index.html',

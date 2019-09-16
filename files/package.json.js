@@ -20,6 +20,7 @@ module.exports = () => {
             "babel-plugin-add-module-exports": "^0.2.1",
             "chromedriver": "^2.41.0",
             "clean-webpack-plugin": "^0.1.19",
+            "core-js": "^2.6.9",
             "css-loader": "^0.28.11",            
             "docdash": "^1.1.0",
             "dotenv-webpack": "^1.5.7",

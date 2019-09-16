@@ -1,5 +1,7 @@
 module.exports = () => {
     return `
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
     rules: [
         {
@@ -33,17 +35,26 @@ module.exports = {
             }]
         },
         {
-            test: /\\.(s*)css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                publicPath: 'assets/css',
-                use: [
-                    "css-loader", // translates CSS into CommonJS
-                    "sass-loader", // compiles Sass to CSS
-                    'resolve-url-loader'
-                ]
-            })
+            test: /\.(s*)css$/,
+            use: [
+                "style-loader", // creates style nodes from JS strings
+                "css-loader", // translates CSS into CommonJS
+                "sass-loader" // compiles Sass to CSS
+            ]
         },
+        // emit css file
+        // {
+        //     test: /\\.(s*)css$/,
+        //     use: ExtractTextPlugin.extract({
+        //         fallback: 'style-loader',
+        //         publicPath: 'assets/css',
+        //         use: [
+        //             "css-loader", // translates CSS into CommonJS
+        //             "sass-loader", // compiles Sass to CSS
+        //             'resolve-url-loader'
+        //         ]
+        //     })
+        // },
         {
             test: /\\.(png|jpg|ico)$/,
             use: [{
