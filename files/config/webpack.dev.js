@@ -2,38 +2,26 @@ module.exports = () => {
 	return `
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-const rules = require('./webpack.rules');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const moduleRules = require('./webpack.rules');
 
 const dot = new Dotenv({
 	path: './.env'
 });
 
 module.exports = (env, args) => {
-	let ASSETS_URL = dot.definitions['process.env.ASSETS_URL'].replace(/[\\"]/g, '');
-
+	let ASSETS_URL = dot.definitions['process.env.ASSETS_URL'].replace(/[\\\\"]/g, '');
+	let prepared = moduleRules(env, args);
 	let config = {
-		entry: {
-			'main': './src/main.js'		
-		},
-		output: {
+		cache : true,
+		entry : prepared.entry,
+		output : {
 			path: path.resolve(__dirname, '../dist'),
-			filename: '[name].[hash:6].js',
-			publicPath: ##ASSETS_URL##
+			filename: 'assets/js/[name].[hash:6].js',
+			//publicPath: ##ASSETS_URL##
 		},
-		module: rules,
-		plugins: [
-			dot,
-			// emit css file
-			// new ExtractTextPlugin('assets/css/[name].[hash:6].css'),
-			new HtmlWebpackPlugin({
-				filename: './index.html',
-				template: './src/index.html',
-				chunks: ['main']
-			})			
-		]
+		optimization : prepared.optimization,
+		module : prepared.rules,
+		plugins : prepared.plugins 
 	}
 
 	return config;
