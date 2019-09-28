@@ -4,8 +4,8 @@ module.exports = () => {
         "version": "0.0.1",
         "description": "##project_description##",
         "scripts": {
-            "local": "webpack-dev-server --watch --display-error-details --config ./config/webpack.dev --env=./.env --mode development --entry=main",
-            "build": "rimraf dist && webpack --config ./config/webpack.prod --mode production --env=./.env --entry=main",
+            "local": "webpack-dev-server --watch --display-error-details --config ./config/webpack.dev --env=./.env --mode development --entryPoint=main",
+            "build": "rimraf dist && webpack --config ./config/webpack.prod --mode production --env=./.env --entryPoint=main",
             "test": "./node_modules/.bin/karma start karma.config.js",            
             "docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
         },
