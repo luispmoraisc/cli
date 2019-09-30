@@ -10,12 +10,12 @@ const dot = new Dotenv({
 });
 
 module.exports = (entry) => {    
-    let favicon = './src/favicon.ico';
+    //let favicon = './src/favicon.ico';
     let html = new HtmlWebpackPlugin({
         filename : './index.html',
         template : './src/index.html',
         chunks : [entry, 'vendors'],        
-        favicon : favicon,
+        //favicon : favicon,
         minify : {
             collapseWhitespace : true,
             removeComments : true,
