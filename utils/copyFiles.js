@@ -1,9 +1,6 @@
 const fs = require('fs');
 const package = require('../files/package.json');
 const jsDoc = require('../files/jsdoc');
-const karmaConfig = require('../files/karma');
-const specRunner = require('../files/specRunner');
-const testsWP = require('../files/tests.webpack');
 const gitignore = require('../files/gitignore');
 const readme = require('../files/readme');
 const webpackDev = require('../files/config/webpack.dev');
@@ -47,16 +44,7 @@ module.exports = ( folder, params ) => {
         })
         fs.appendFile(`./${dir}/jsdoc.json`, JSON.stringify(jsDoc(), null, '\t'), (err) => {
             if(err) throw err;
-        })
-        fs.appendFile(`./${dir}/karma.config.js`, karmaConfig(), (err) => {
-            if(err) throw err;
-        })
-        fs.appendFile(`./${dir}/specRunner.html`, specRunner(), (err) => {
-            if(err) throw err;
-        })
-        fs.appendFile(`./${dir}/tests.webpack.js`, testsWP(), (err) => {
-            if(err) throw err;
-        })
+        })                        
         fs.appendFile(`./${dir}/.gitignore`, gitignore(), (err) => {
             if(err) throw err;
         })

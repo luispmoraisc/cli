@@ -19,7 +19,6 @@ module.exports = () => {
             "babel-loader": "^8.0.4",
             "babel-plugin-add-module-exports": "^0.2.1",
             "brotli-webpack-plugin": "^1.1.0",
-            "chromedriver": "^2.41.0",
             "clean-webpack-plugin": "^0.1.19",
             "css-loader": "^0.28.11",
             "core-js" : "^2.0.0",
@@ -31,19 +30,8 @@ module.exports = () => {
             "file-loader": "^1.1.11",
             "html-webpack-plugin": "^3.2.0",
             "istanbul-instrumenter-loader": "^3.0.1",
-            "jasmine-core": "^3.2.1",
+            "jest": "^24.9.0",
             "jsdoc": "^3.6.1",
-            "karma": "^3.1.4",
-            "karma-chrome-launcher": "^2.2.0",
-            "karma-coverage": "^1.1.2",
-            "karma-coverage-istanbul-reporter": "^2.0.5",
-            "karma-jasmine": "^2.0.1",
-            "karma-jasmine-ajax": "^0.1.13",
-            "karma-junit-reporter": "^1.2.0",
-            "karma-phantomjs-launcher": "^1.0.4",
-            "karma-sourcemap-loader": "^0.3.7",
-            "karma-webpack": "^3.0.5",
-            "melanke-watchjs": "^1.4.3",
             "mini-css-extract-plugin": "^0.4.4",
             "node-sass": "^4.12.0",
             "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -58,8 +46,7 @@ module.exports = () => {
             "webpack": "^4.26.1",
             "webpack-cli": "^3.0.8",
             "webpack-dev-server": "^3.1.10",
-            "webpack-merge": "^4.1.3",
-            "window-mock": "0.0.13"
+            "webpack-merge": "^4.1.3"
         },
         "dependencies": {}
     }   
