@@ -1,14 +1,15 @@
 const fs = require('fs');
 const package = require('../files/package.json');
 const jsDoc = require('../files/jsdoc');
-const karmaConfig = require('../files/karma');
-const specRunner = require('../files/specRunner');
-const testsWP = require('../files/tests.webpack');
 const gitignore = require('../files/gitignore');
 const readme = require('../files/readme');
 const webpackDev = require('../files/config/webpack.dev');
 const webpackProd = require('../files/config/webpack.prod');
 const webpackRules = require('../files/config/webpack.rules');
+const webpackSetEntry = require('../files/config/setEntry');
+const webpackSetOptimization = require('../files/config/setOptimization');
+const webpackSetPlugins = require('../files/config/setPlugins');
+const webpackSetRules = require('../files/config/setRules');
 const indexHTML = require('../files/src/index.html');
 const mainJS = require('../files/src/main');
 const appJS = require('../files/src/app/app');
@@ -43,16 +44,7 @@ module.exports = ( folder, params ) => {
         })
         fs.appendFile(`./${dir}/jsdoc.json`, JSON.stringify(jsDoc(), null, '\t'), (err) => {
             if(err) throw err;
-        })
-        fs.appendFile(`./${dir}/karma.config.js`, karmaConfig(), (err) => {
-            if(err) throw err;
-        })
-        fs.appendFile(`./${dir}/specRunner.html`, specRunner(), (err) => {
-            if(err) throw err;
-        })
-        fs.appendFile(`./${dir}/tests.webpack.js`, testsWP(), (err) => {
-            if(err) throw err;
-        })
+        })                        
         fs.appendFile(`./${dir}/.gitignore`, gitignore(), (err) => {
             if(err) throw err;
         })
@@ -60,6 +52,18 @@ module.exports = ( folder, params ) => {
             if(err) throw err;
         })
         fs.appendFile(`./${dir}/.env`, 'ASSETS_URL=./', (err) => {
+            if(err) throw err;
+        })
+        fs.appendFile(`${config}/setEntry.js`, webpackSetEntry(), (err) => {
+            if(err) throw err;
+        })
+        fs.appendFile(`${config}/setOptimization.js`, webpackSetOptimization(), (err) => {
+            if(err) throw err;
+        })
+        fs.appendFile(`${config}/setPlugins.js`, webpackSetPlugins(), (err) => {
+            if(err) throw err;
+        })
+        fs.appendFile(`${config}/setRules.js`, webpackSetRules(), (err) => {
             if(err) throw err;
         })
         fs.appendFile(`${config}/webpack.rules.js`, webpackRules().replace(/##ASSETS_URL##/g, '`${ASSETS_URL}`'), (err) => {

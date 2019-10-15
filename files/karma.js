@@ -3,7 +3,7 @@ module.exports = () => {
 module.exports = function (config) {
     config.set(
     {        
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         client: {
             runInParent : true,
             clearContext : true
@@ -15,16 +15,17 @@ module.exports = function (config) {
             'jasmine-ajax',
             'jasmine'
         ],
-        autoWatch: true,
-        singleRun : false,
-        restartOnFileChange : true,
+        autoWatch: false,
+        singleRun : true,
+        restartOnFileChange : false,
         plugins : [
             'karma-jasmine-ajax', 
             'karma-webpack', 
             'karma-jasmine',
             'karma-sourcemap-loader',
             'karma-coverage-istanbul-reporter',
-            'karma-chrome-launcher'
+            'karma-chrome-launcher',
+            'karma-phantomjs-launcher'
         ],
         preprocessors: {
             'tests.webpack.js': ['webpack', 'sourcemap'],
@@ -32,9 +33,9 @@ module.exports = function (config) {
         webpack: {
             cache: true,
             devtool: 'inline-source-map',
-            mode : 'development',
+            mode : 'production',
             entry : {
-                'app': './src/main.js'
+                'main': './src/main.js'
             },
             module: {
                 
@@ -51,12 +52,13 @@ module.exports = function (config) {
                                         targets: {
                                             browsers: ['last 2 versions', 'ie >= 11']
                                         },
+                                        corejs : '2.0.0',
                                         modules: false,
-                                        useBuiltIns: 'usage'
+                                        useBuiltIns: 'entry'
                                     }
                                 ]
                             ]
-                        }                    
+                        }
                     },
                     {
                         test: /\\.(s*)css$/,
@@ -112,5 +114,6 @@ module.exports = function (config) {
     });    
     
 };
+        
     `;
 }
