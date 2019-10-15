@@ -3,15 +3,37 @@
   "version": "0.0.1",
   "description": "Vanilla JavaScript CLI",
   "main": "./src/index.js",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "create": "npm run build && npm run test",
+    "screate": "npm run build && npm run stest",
+    "build": "tsc -p .",
+    "test": "npm i -g && vjs",
+    "stest": "sudo npm i -g && vjs",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lennonalvesdias/cli"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Lennon Vinicius Alves Dias",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {}
+  "bin": {
+    "vjs": "./lib/index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "commander": "^3.0.2",
+    "figlet": "^1.2.4",
+    "fs": "0.0.1-security",
+    "minimist": "^1.2.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.12",
+    "nodemon": "^1.19.3",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  }
 }
