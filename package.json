@@ -1,20 +1,17 @@
 {
-  "name": "cli_customer",
+  "name": "VJSCLI",
   "version": "0.0.1",
-  "description": "cli for build applications in es6",
-  "main": "index.js",
+  "description": "Vanilla JavaScript CLI",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lennonalvesdias/cli"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Luis Paulo Morais Cardoso",
-  "license": "ISC",
-  "bin": {
-    "cs": "bin/cses6"
-  },
-  "dependencies": {
-    "minimist": "^1.2.0"
-  },
-  "devDependencies": {
-    "cli-spinner": "^0.2.10"
-  }
+  "author": "Lennon Vinicius Alves Dias",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
 }
