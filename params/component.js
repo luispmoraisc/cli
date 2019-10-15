@@ -32,13 +32,20 @@ module.exports = (params) => {
 function createClass(name){
     let capitalize = firstChar(name);
     return `import template from "./template.js";
-
+ 
+import "./${name}.scss";
 /**
  * @class ${capitalize}
  * @classdesc component/class ${capitalize}
 */
 export default class ${capitalize}{
-    constructor(){}
+    constructor(){
+      this._defaultSelector = "component-${name}";
+    }
+    
+    render(){
+      
+    }
 }
 `;
 }
