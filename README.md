@@ -43,13 +43,19 @@ O Vanilla JavaScript CLI é um projeto que tem como intuíto disponibilizar uma 
 
 ### Instalação
 
-- Instalar as dependências do projeto: `npm install`
-- Criar link simbólico global: `npm link`
+- Instalar as dependências (módulos) do projeto: `npm install`
+- Visualizar o CLI imediatamente: `npm start`
+- Executa o `build` e o `test` juntos: `npm run create` ou `npm run screate` (versão sudo)
+- Compilar o arquivo TypeScript `index.ts` em `index.js` e `index.d.ts`: `npm run build`
+- Instalar a CLI globalmente com `npm i -g` e disparando o CLI `vjs`: `npm run test` ou `npm run stest` (versão sudo)
+- Remove os módulos, o `package-lock.json` e executa o `npm install`: `npm run refresh`
 
 ### Gerar projeto/componente
 
-- Criar novo projeto: `cs new myproject --author "your name" --description "Your description here"`
-- Criar novo componente: `cs generate component header`
+- Visualizando helper da CLI: `vjs -h`
+- Visualizando versão da CLI: `vjs -V`
+- Criar novo projeto: `vjs -n <project_name> -a <author_name> -d <project_description>`
+- Criar novo componente: `vjs -g <component_name>`
 
 #### Execução no projeto criado
 
