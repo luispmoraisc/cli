@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+export {};
+
 const fs = require('fs');
 const writeFile = require('../shared/services/write-file');
 const fileEnum = require('../shared/enums/file-enum');
@@ -12,11 +14,13 @@ module.exports = (componentName: string) => {
     }
     catch (error) { }
 
-    if (!fs.existsSync(componentName)) {
-        fs.mkdirSync(componentName);
+    const defaultDir = componentName;
+
+    if (!fs.existsSync(defaultDir)) {
+        fs.mkdirSync(defaultDir);
     }
 
-    writeFile(fs, componentName, fileEnum.CLASS);
-    writeFile(fs, componentName, fileEnum.TEMPLATE);
-    writeFile(fs, componentName, fileEnum.STYLE);
+    writeFile(fs, defaultDir, fileEnum(componentName).CLASS, componentName);
+    writeFile(fs, defaultDir, fileEnum(componentName).TEMPLATE);
+    writeFile(fs, defaultDir, fileEnum(componentName).STYLE, componentName);
 }
