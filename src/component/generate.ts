@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const writeFile = require('../shared/services/write-file');
 const fileClass = require('../shared/files/class');
 const fileTemplate = require('../shared/files/template');
 const fileScss = require('../shared/files/scss');
@@ -21,24 +22,7 @@ module.exports = (componentName: string) => {
         fs.mkdirSync(componentName);
     }
 
-    fs.writeFile(`./${componentName}/${componentName}.js`, classFile, (error: Error) => {
-        if (error) {
-            console.log(error);
-        };
-        console.log(`Created a new javascript in component.`);
-    });
-
-    fs.writeFile(`./${componentName}/template.js`, templateFile, (error: Error) => {
-        if (error) {
-            console.log(error);
-        };
-        console.log(`Created a new template in component.`);
-    });
-
-    fs.writeFile(`./${componentName}/${componentName}.scss`, scssFile, (error: Error) => {
-        if (error) {
-            console.log(error);
-        };
-        console.log(`Created a new scss in component.`);
-    });
+    writeFile(fs, componentName, classFile, 'class', 'js');
+    writeFile(fs, componentName, templateFile, 'template', 'js');
+    writeFile(fs, componentName, scssFile, 'style', 'scss');
 }
