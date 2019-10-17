@@ -2,16 +2,10 @@
 
 const fs = require('fs');
 const writeFile = require('../shared/services/write-file');
-const fileClass = require('../shared/files/class');
-const fileTemplate = require('../shared/files/template');
-const fileScss = require('../shared/files/scss');
+const fileEnum = require('../shared/enums/file-enum');
 
 module.exports = (componentName: string) => {
     console.log('component name:', componentName);
-    
-    let classFile = fileClass(componentName);
-    let templateFile = fileTemplate(componentName);
-    let scssFile = fileScss();
 
     try {
         fs.statSync(componentName);
@@ -22,7 +16,7 @@ module.exports = (componentName: string) => {
         fs.mkdirSync(componentName);
     }
 
-    writeFile(fs, componentName, classFile, 'class', 'js');
-    writeFile(fs, componentName, templateFile, 'template', 'js');
-    writeFile(fs, componentName, scssFile, 'style', 'scss');
+    writeFile(fs, componentName, fileEnum.CLASS);
+    writeFile(fs, componentName, fileEnum.TEMPLATE);
+    writeFile(fs, componentName, fileEnum.STYLE);
 }

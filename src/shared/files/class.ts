@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 module.exports = (name: any) => {
     let capitalize = firstChar(name);
     return `
