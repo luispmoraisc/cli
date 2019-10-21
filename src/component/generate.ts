@@ -6,7 +6,7 @@ const fs = require('fs');
 const writeFile = require('../shared/services/write-file');
 const fileEnum = require('../shared/enums/file-enum');
 
-module.exports = (componentName: string) => {
+module.exports = async (componentName: string) => {
     console.log('component name:', componentName);
 
     try {
@@ -20,7 +20,9 @@ module.exports = (componentName: string) => {
         fs.mkdirSync(defaultDir);
     }
 
-    writeFile(fs, defaultDir, fileEnum(componentName).CLASS, componentName);
-    writeFile(fs, defaultDir, fileEnum(componentName).TEMPLATE);
-    writeFile(fs, defaultDir, fileEnum(componentName).STYLE, componentName);
+    const allFiles = await fileEnum(componentName);
+
+    writeFile(fs, defaultDir, allFiles.CLASS, componentName);
+    writeFile(fs, defaultDir, allFiles.TEMPLATE);
+    writeFile(fs, defaultDir, allFiles.STYLE, componentName);
 }

@@ -4,7 +4,7 @@ const minimist = require('minimist');
 const projectNew = require('./project/new');
 const componentGenerate = require('./component/generate');
 
-module.exports = (args: { slice: (arg0: number) => void; }) => {
+module.exports = async (args: { slice: (arg0: number) => void; }) => {
     const argv = minimist(args.slice(2), { '--': true });
 
     const newProject = argv.n || argv.new;
@@ -18,10 +18,10 @@ module.exports = (args: { slice: (arg0: number) => void; }) => {
     console.log(newGenerate);
 
     if (newProject) {
-        projectNew(newProject, authorName, description);
+        await projectNew(newProject, authorName, description);
     }
 
     if (newGenerate) {
-        componentGenerate(newGenerate);
+        await componentGenerate(newGenerate);
     }
 }

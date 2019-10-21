@@ -2,7 +2,7 @@
 
 module.exports = (fs: any, dirName: string, file: any, customFileName: string) => {
     const fileName = file.name ? file.name : customFileName;
-    fs.writeFile(`./${dirName}/${fileName}.${file.extension}`, file.content, (error: Error) => {
+    fs.writeFile(`./${dirName}/${fileName}${file.extension}`, file.content, (error: Error) => {
         if (error) {
             console.log(error);
         };

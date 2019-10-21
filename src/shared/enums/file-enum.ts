@@ -3,34 +3,40 @@
 const fileClass = require('../files/class');
 const fileTemplate = require('../files/template');
 const fileScss = require('../files/scss');
-const filePackage = require('../files/package')
+const filePackage = require('../files/package');
+const fileGitignore = require('../files/gitignore');
 
-module.exports = (customFileName: string, fileDescription: string, fileAuthor: string) => {
+module.exports = async (customFileName: string, fileAuthor: string, fileDescription: string) => {
     return {
         CLASS: {
             name: null,
-            extension: 'js',
+            extension: '.js',
             content: fileClass(customFileName)
         },
         TEMPLATE: {
             name: 'template',
-            extension: 'js',
+            extension: '.js',
             content: fileTemplate(customFileName)
         },
         STYLE: {
             name: null,
-            extension: 'scss',
+            extension: '.scss',
             content: fileScss()
         },
         PACKAGE: {
             name: 'package',
-            extension: 'json',
+            extension: '.json',
             content: filePackage(customFileName, fileDescription, fileAuthor)
         },
         JSDOC: {
             name: 'jsdoc',
-            extension: 'json',
+            extension: '.json',
             content: null
+        },
+        GITIGNORE: {
+            name: '.gitignore',
+            extension: '',
+            content: await fileGitignore(['visualstudio', 'visualstudiocode'])
         }
     }
 }

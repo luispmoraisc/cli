@@ -6,7 +6,7 @@ const fs = require('fs');
 const writeFile = require('../shared/services/write-file');
 const fileEnum = require('../shared/enums/file-enum');
 
-module.exports = (projectName: string, authorName: string, description: string) => {
+module.exports = async (projectName: string, authorName: string, description: string) => {
     console.log('project name: ', projectName);
     console.log('author name: ', authorName);
     console.log('project description: ', description);
@@ -30,5 +30,8 @@ module.exports = (projectName: string, authorName: string, description: string) 
         fs.mkdirSync(stylesDir);
     }
 
-    writeFile(fs, defaultDir, fileEnum(projectName, authorName, description).PACKAGE);
+    const allFiles = await fileEnum(projectName, authorName, description);
+
+    writeFile(fs, defaultDir, allFiles.PACKAGE);
+    writeFile(fs, defaultDir, allFiles.GITIGNORE);
 }
