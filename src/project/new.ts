@@ -33,5 +33,33 @@ module.exports = async (projectName: string, authorName: string, description: st
     const allFiles = await fileEnum(projectName, authorName, description);
 
     writeFile(fs, defaultDir, allFiles.PACKAGE);
+    writeFile(fs, defaultDir, allFiles.JSDOC);
     writeFile(fs, defaultDir, allFiles.GITIGNORE);
+    writeFile(fs, defaultDir, allFiles.README);
+    writeFile(fs, defaultDir, allFiles.ENV);
+    
+    // config
+    writeFile(fs, configDir, allFiles.SETENTRY);
+    writeFile(fs, configDir, allFiles.SETOPTIMIZATION);
+    writeFile(fs, configDir, allFiles.SETPLUGINS);
+    writeFile(fs, configDir, allFiles.SETRULES);
+    writeFile(fs, configDir, allFiles.WEBPACKRULES);
+    writeFile(fs, configDir, allFiles.WEBPACKDEV);
+    writeFile(fs, configDir, allFiles.WEBPACKPROD);
+    
+    // src
+    writeFile(fs, srcDir, allFiles.INDEX);
+    writeFile(fs, srcDir, allFiles.MAINJS);
+
+    // application
+    writeFile(fs, appDir, allFiles.APPJS);
+    writeFile(fs, appDir, allFiles.TEMPLATE_NEWP);
+    writeFile(fs, appDir, allFiles.APPCSSS);
+
+    // styles
+    writeFile(fs, stylesDir, allFiles.MAINSCSS);
+    writeFile(fs, stylesDir, allFiles.MIXINS);
+    writeFile(fs, stylesDir, allFiles.SPINNER);
+    writeFile(fs, stylesDir, allFiles.THEMES);
+    writeFile(fs, stylesDir, allFiles.THEMIFY);
 }

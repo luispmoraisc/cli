@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 module.exports = (fs: any, dirName: string, file: any, customFileName: string) => {
-    const fileName = file.name ? file.name : customFileName;
-    fs.writeFile(`./${dirName}/${fileName}${file.extension}`, file.content, (error: Error) => {
+    const fileName = file.useCustomName ? customFileName : file.name;
+    fs.writeFile(`./${dirName}/${fileName ? fileName : ''}${file.extension}`, file.content, (error: Error) => {
         if (error) {
             console.log(error);
         };

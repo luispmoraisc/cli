@@ -23,6 +23,6 @@ module.exports = async (componentName: string) => {
     const allFiles = await fileEnum(componentName);
 
     writeFile(fs, defaultDir, allFiles.CLASS, componentName);
-    writeFile(fs, defaultDir, allFiles.TEMPLATE);
+    writeFile(fs, defaultDir, allFiles.TEMPLATE_NEWC);
     writeFile(fs, defaultDir, allFiles.STYLE, componentName);
 }
