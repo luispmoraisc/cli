@@ -1,27 +1,27 @@
 #!/usr/bin/env node
 
 const minimist = require('minimist');
-const projectNew = require('./project/new');
-const componentGenerate = require('./component/generate');
+const generateProject = require('./project/generate');
+const generateComponent = require('./component/generate');
 
 module.exports = async (args: { slice: (arg0: number) => void; }) => {
     const argv = minimist(args.slice(2), { '--': true });
 
-    const newProject = argv.n || argv.new;
+    const projectName = argv.n || argv.new;
     const authorName = argv.a || argv.author;
     const description = argv.d || argv.description;
-    const newGenerate = argv.g || argv.generate;
+    const componentName = argv.g || argv.generate;
 
-    console.log(newProject);
+    console.log(projectName);
     console.log(authorName);
     console.log(description);
-    console.log(newGenerate);
+    console.log(componentName);
 
-    if (newProject) {
-        await projectNew(newProject, authorName, description);
+    if (projectName) {
+        await generateProject(projectName, authorName, description);
     }
 
-    if (newGenerate) {
-        await componentGenerate(newGenerate);
+    if (componentName) {
+        await generateComponent(componentName);
     }
 }

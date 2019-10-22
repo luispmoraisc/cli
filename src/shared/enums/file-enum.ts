@@ -1,141 +1,198 @@
 #!/usr/bin/env node
 
-const fileClass = require('../files/class');
-const fileTemplate = require('../files/template');
-const fileScss = require('../files/scss');
-const filePackage = require('../files/package');
-const fileJsDoc = require('../files/jsdoc');
-const fileGitignore = require('../files/gitignore');
-const fileReadme = require('../files/readme');
+const fileComponentClass = require('../files/component/class');
+const fileComponentTemplate = require('../files/component/template');
+const fileComponentScss = require('../files/component/scss');
+
+const fileProjectPackage = require('../files/project/package');
+const fileProjectJsdoc = require('../files/project/jsdoc');
+const fileProjectGitignore = require('../files/project/gitignore');
+const fileProjectReadme = require('../files/project/readme');
+const fileProjectEnv = require('../files/project/env');
+
+const fileProjectConfigSetEntry = require('../files/project/config/set-entry');
+const fileProjectConfigSetOptimization = require('../files/project/config/set-optimization');
+const fileProjectConfigSetPlugins = require('../files/project/config/set-plugins');
+const fileProjectConfigSetRules = require('../files/project/config/set-rules');
+const fileProjectConfigWebpackDev = require('../files/project/config/webpack-dev');
+const fileProjectConfigWebpackProd = require('../files/project/config/webpack-prod');
+const fileProjectConfigWebpackRules = require('../files/project/config/webpack-rules');
+
+const fileProjectSrcIndex = require('../files/project/src/index');
+const fileProjectSrcMain = require('../files/project/src/main');
+
+const fileProjectSrcAppApp = require('../files/project/src/app/app');
+const fileProjectSrcAppTemplate = require('../files/project/src/app/template');
+
+const fileProjectSrcStyleMain = require('../files/project/src/styles/main');
+const fileProjectSrcStyleMixins = require('../files/project/src/styles/mixins');
+const fileProjectSrcStyleSpinner = require('../files/project/src/styles/spinner');
+const fileProjectSrcStyleThemes = require('../files/project/src/styles/themes');
+const fileProjectSrcStyleThemify = require('../files/project/src/styles/themify');
 
 module.exports = async (customFileName: string, fileAuthor: string, fileDescription: string) => {
+    const componentEnum = await getComponentEnum(customFileName, fileAuthor, fileDescription);
+    const projectEnum = await getProjectEnum(customFileName, fileAuthor, fileDescription);
+    const projectSrcEnum = await getProjectSrcEnum(customFileName, fileAuthor, fileDescription);
+    const projectConfigEnum = await getProjectConfigEnum(customFileName, fileAuthor, fileDescription);
+    const projectAppEnum = await getProjectAppEnum(customFileName, fileAuthor, fileDescription);
+    const projectStyleEnum = await getProjectStyleEnum(customFileName, fileAuthor, fileDescription);
+    return Object.assign(componentEnum, projectEnum, projectSrcEnum, projectConfigEnum, projectAppEnum, projectStyleEnum);
+}
+
+async function getComponentEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
     return {
-        CLASS: {
+        COMPONENT_CLASS: {
             name: null,
             extension: '.js',
-            content: fileClass(customFileName),
+            content: fileComponentClass(customFileName),
             useCustomName: true
         },
-        TEMPLATE_NEWC: {
+        COMPONENT_TEMPLATE: {
             name: 'template',
             extension: '.js',
-            content: fileTemplate(customFileName)
+            content: fileComponentTemplate(customFileName)
         },
-        STYLE: {
+        COMPONENT_STYLE: {
             name: null,
             extension: '.scss',
-            content: fileScss(),
+            content: fileComponentScss(),
             useCustomName: true
         },
-        PACKAGE: {
-            name: 'package',
-            extension: '.json',
-            content: filePackage(customFileName, fileDescription, fileAuthor)
-        },
-        JSDOC: {
-            name: 'jsdoc',
-            extension: '.json',
-            content: fileJsDoc()
-        },
-        GITIGNORE: {
-            name: '.gitignore',
-            extension: '',
-            content: await fileGitignore(['visualstudio', 'visualstudiocode'])
-        },
-        README: {
-            name: 'README',
-            extension: '.md',
-            content: fileReadme()
-        },
-        ENV: {
+    }
+}
+
+async function getProjectEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
+    return {
+        PROJECT_ENV: {
             name: null,
             extension: '.env',
-            content: null
+            content: fileProjectEnv()
         },
-        SETENTRY: {
+        PROJECT_GITIGNORE: {
+            name: '.gitignore',
+            extension: '',
+            content: await fileProjectGitignore(['visualstudio', 'visualstudiocode'])
+        },
+        PROJECT_JSDOC: {
+            name: 'jsdoc',
+            extension: '.json',
+            content: fileProjectJsdoc()
+        },
+        PROJECT_PACKAGE: {
+            name: 'package',
+            extension: '.json',
+            content: fileProjectPackage(customFileName, fileDescription, fileAuthor)
+        },
+        PROJECT_README: {
+            name: 'README',
+            extension: '.md',
+            content: fileProjectReadme()
+        },
+    }
+}
+
+async function getProjectConfigEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
+    return {
+        PROJECT_CONFIG_SET_ENTRY: {
             name: 'setEntry',
             extension: '.js',
-            content: null
+            content: fileProjectConfigSetEntry()
         },
-        SETOPTIMIZATION: {
+        PROJECT_CONFIG_SET_OPTIMIZATION: {
             name: 'setOptimization',
             extension: '.js',
-            content: null
+            content: fileProjectConfigSetOptimization()
         },
-        SETPLUGINS: {
+        PROJECT_CONFIG_SET_PLUGINS: {
             name: 'setPlugins',
             extension: '.js',
-            content: null
+            content: fileProjectConfigSetPlugins()
         },
-        SETRULES: {
+        PROJECT_CONFIG_SET_RULES: {
             name: 'setRules',
             extension: '.js',
-            content: null
+            content: fileProjectConfigSetRules()
         },
-        WEBPACKRULES: {
+        PROJECT_CONFIG_WEBPACK_RULES: {
             name: 'webpack.rules',
             extension: '.js',
-            content: null
+            content: fileProjectConfigWebpackRules()
         },
-        WEBPACKDEV: {
+        PROJECT_CONFIG_WEBPACK_DEV: {
             name: 'webpack.dev',
             extension: '.js',
-            content: null
+            content: fileProjectConfigWebpackDev()
         },
-        WEBPACKPROD: {
+        PROJECT_CONFIG_WEBPACK_PROD: {
             name: 'webpack.prod',
             extension: '.js',
-            content: null
+            content: fileProjectConfigWebpackProd()
         },
-        INDEX: {
+    }
+}
+
+async function getProjectSrcEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
+    return {
+        PROJECT_SRC_INDEX: {
             name: 'index',
             extension: '.html',
-            content: null
+            content: fileProjectSrcIndex(customFileName)
         },
-        MAINJS: {
+        PROJECT_SRC_MAIN: {
             name: 'main',
             extension: '.js',
-            content: null
+            content: fileProjectSrcMain()
         },
-        APPJS: {
+    }
+}
+
+async function getProjectAppEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
+    return {
+        PROJECT_APP_APP: {
             name: 'app',
             extension: '.js',
-            content: null
+            content: fileProjectSrcAppApp()
         },
-        TEMPLATE_NEWP: {
+        PROJECT_APP_TEMPLATE: {
             name: 'template',
             extension: '.js',
-            content: null
+            content: fileProjectSrcAppTemplate()
         },
-        APPCSSS: {
+        PROJECT_APP_SCSS: {
             name: 'app',
             extension: '.scss',
-            content: null
+            content: ''
         },
-        MAINSCSS: {
+    }
+}
+
+async function getProjectStyleEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
+    return {
+        PROJECT_STYLE_MAIN: {
             name: 'main',
             extension: '.scss',
-            content: null
+            content: fileProjectSrcStyleMain()
         },
-        MIXINS: {
+        PROJECT_STYLE_MIXINS: {
             name: 'mixins',
             extension: '.scss',
-            content: null
+            content: fileProjectSrcStyleMixins()
         },
-        SPINNER: {
+        PROJECT_STYLE_SPINNER: {
             name: 'spinner',
             extension: '.scss',
-            content: null
+            content: fileProjectSrcStyleSpinner()
         },
-        THEMES: {
+        PROJECT_STYLE_THEMES: {
             name: 'themes',
             extension: '.scss',
-            content: null
+            content: fileProjectSrcStyleThemes()
         },
-        THEMIFY: {
+        PROJECT_STYLE_THEMIFY: {
             name: 'themify',
             extension: '.scss',
-            content: null
-        }
+            content: fileProjectSrcStyleThemify()
+        },
     }
 }
