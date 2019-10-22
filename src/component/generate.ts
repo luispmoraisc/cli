@@ -7,8 +7,6 @@ const writeFile = require('../shared/services/write-file');
 const fileEnum = require('../shared/enums/file-enum');
 
 module.exports = async (componentName: string) => {
-    console.log('component name:', componentName);
-
     try {
         fs.statSync(componentName);
     }

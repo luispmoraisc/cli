@@ -12,11 +12,6 @@ module.exports = async (args: { slice: (arg0: number) => void; }) => {
     const description = argv.d || argv.description;
     const componentName = argv.g || argv.generate;
 
-    console.log(projectName);
-    console.log(authorName);
-    console.log(description);
-    console.log(componentName);
-
     if (projectName) {
         await generateProject(projectName, authorName, description);
     }

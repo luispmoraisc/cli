@@ -7,10 +7,6 @@ const writeFile = require('../shared/services/write-file');
 const fileEnum = require('../shared/enums/file-enum');
 
 module.exports = async (projectName: string, authorName: string, description: string) => {
-    console.log('project name: ', projectName);
-    console.log('author name: ', authorName);
-    console.log('project description: ', description);
-
     try {
         fs.statSync(projectName);
     }
