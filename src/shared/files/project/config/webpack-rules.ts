@@ -7,10 +7,10 @@ const setRules = require('./setRules');
 const setOptimization = require('./setOptimization');
 
 module.exports = (env, args) => {
-    let getEntry = setEntry(args.entry);
-    let getPlugins = setPlugins(args.entry); 
+    let getEntry = setEntry(args.entryPoint);
+    let getPlugins = setPlugins(args.entryPoint); 
     let getRules = setRules();
-    let getOptimization = setOptimization( args.entry );
+    let getOptimization = setOptimization( args.entryPoint );
     return {
         entry : getEntry,
         plugins : getPlugins,

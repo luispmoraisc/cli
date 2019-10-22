@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-export {};
+export { };
 
 const fs = require('fs');
 const writeFile = require('../shared/services/write-file');
@@ -13,10 +13,10 @@ module.exports = async (projectName: string, authorName: string, description: st
     catch (error) { }
 
     const defaultDir = projectName;
-    const srcDir = `${projectName}/src`;
     const configDir = `${projectName}/config`;
-    const appDir = `${projectName}/app`;
-    const stylesDir = `${projectName}/styles`;
+    const srcDir = `${projectName}/src`;
+    const appDir = `${srcDir}/app`;
+    const stylesDir = `${srcDir}/styles`;
 
     if (!fs.existsSync(defaultDir)) {
         fs.mkdirSync(defaultDir);
@@ -33,7 +33,7 @@ module.exports = async (projectName: string, authorName: string, description: st
     writeFile(fs, defaultDir, allFiles.PROJECT_GITIGNORE);
     writeFile(fs, defaultDir, allFiles.PROJECT_README);
     writeFile(fs, defaultDir, allFiles.PROJECT_ENV);
-    
+
     // config
     writeFile(fs, configDir, allFiles.PROJECT_CONFIG_SET_ENTRY);
     writeFile(fs, configDir, allFiles.PROJECT_CONFIG_SET_OPTIMIZATION);
@@ -42,7 +42,7 @@ module.exports = async (projectName: string, authorName: string, description: st
     writeFile(fs, configDir, allFiles.PROJECT_CONFIG_WEBPACK_RULES);
     writeFile(fs, configDir, allFiles.PROJECT_CONFIG_WEBPACK_DEV);
     writeFile(fs, configDir, allFiles.PROJECT_CONFIG_WEBPACK_PROD);
-    
+
     // src
     writeFile(fs, srcDir, allFiles.PROJECT_SRC_INDEX);
     writeFile(fs, srcDir, allFiles.PROJECT_SRC_MAIN);
@@ -55,7 +55,6 @@ module.exports = async (projectName: string, authorName: string, description: st
     // styles
     writeFile(fs, stylesDir, allFiles.PROJECT_STYLE_MAIN);
     writeFile(fs, stylesDir, allFiles.PROJECT_STYLE_MIXINS);
-    writeFile(fs, stylesDir, allFiles.PROJECT_STYLE_SPINNER);
     writeFile(fs, stylesDir, allFiles.PROJECT_STYLE_THEMES);
     writeFile(fs, stylesDir, allFiles.PROJECT_STYLE_THEMIFY);
 }

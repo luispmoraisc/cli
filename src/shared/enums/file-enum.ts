@@ -26,7 +26,6 @@ const fileProjectSrcAppTemplate = require('../files/project/src/app/template');
 
 const fileProjectSrcStyleMain = require('../files/project/src/styles/main');
 const fileProjectSrcStyleMixins = require('../files/project/src/styles/mixins');
-const fileProjectSrcStyleSpinner = require('../files/project/src/styles/spinner');
 const fileProjectSrcStyleThemes = require('../files/project/src/styles/themes');
 const fileProjectSrcStyleThemify = require('../files/project/src/styles/themify');
 
@@ -34,10 +33,10 @@ module.exports = async (customFileName: string, fileAuthor: string, fileDescript
     const componentEnum = await getComponentEnum(customFileName, fileAuthor, fileDescription);
     const projectEnum = await getProjectEnum(customFileName, fileAuthor, fileDescription);
     const projectSrcEnum = await getProjectSrcEnum(customFileName, fileAuthor, fileDescription);
+    const projectSrcAppEnum = await getProjectSrcAppEnum(customFileName, fileAuthor, fileDescription);
     const projectConfigEnum = await getProjectConfigEnum(customFileName, fileAuthor, fileDescription);
-    const projectAppEnum = await getProjectAppEnum(customFileName, fileAuthor, fileDescription);
     const projectStyleEnum = await getProjectStyleEnum(customFileName, fileAuthor, fileDescription);
-    return Object.assign(componentEnum, projectEnum, projectSrcEnum, projectConfigEnum, projectAppEnum, projectStyleEnum);
+    return Object.assign(componentEnum, projectEnum, projectSrcEnum, projectConfigEnum, projectSrcAppEnum, projectStyleEnum);
 }
 
 async function getComponentEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
@@ -147,7 +146,7 @@ async function getProjectSrcEnum(customFileName: string, fileAuthor: string, fil
     }
 }
 
-async function getProjectAppEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
+async function getProjectSrcAppEnum(customFileName: string, fileAuthor: string, fileDescription: string) {
     return {
         PROJECT_APP_APP: {
             name: 'app',
@@ -157,7 +156,7 @@ async function getProjectAppEnum(customFileName: string, fileAuthor: string, fil
         PROJECT_APP_TEMPLATE: {
             name: 'template',
             extension: '.js',
-            content: fileProjectSrcAppTemplate()
+            content: fileProjectSrcAppTemplate(customFileName)
         },
         PROJECT_APP_SCSS: {
             name: 'app',
@@ -178,11 +177,6 @@ async function getProjectStyleEnum(customFileName: string, fileAuthor: string, f
             name: 'mixins',
             extension: '.scss',
             content: fileProjectSrcStyleMixins()
-        },
-        PROJECT_STYLE_SPINNER: {
-            name: 'spinner',
-            extension: '.scss',
-            content: fileProjectSrcStyleSpinner()
         },
         PROJECT_STYLE_THEMES: {
             name: 'themes',

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-module.exports = () => {
+module.exports = (componentName: string) => {
     return `export default {
     /**
      * Template da classe App
@@ -9,7 +9,7 @@ module.exports = () => {
      * @return {String} retorna o HTML dos componentes 
     */
     app(){
-        return <h1>App run</h1>;
+        return \`<h1>${componentName} run</h1>\`;
     }
 }`;
 };

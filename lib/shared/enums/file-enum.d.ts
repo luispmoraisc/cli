@@ -20,7 +20,6 @@ declare const fileProjectSrcAppApp: any;
 declare const fileProjectSrcAppTemplate: any;
 declare const fileProjectSrcStyleMain: any;
 declare const fileProjectSrcStyleMixins: any;
-declare const fileProjectSrcStyleSpinner: any;
 declare const fileProjectSrcStyleThemes: any;
 declare const fileProjectSrcStyleThemify: any;
 declare function getComponentEnum(customFileName: string, fileAuthor: string, fileDescription: string): Promise<{
@@ -118,7 +117,7 @@ declare function getProjectSrcEnum(customFileName: string, fileAuthor: string, f
         content: any;
     };
 }>;
-declare function getProjectAppEnum(customFileName: string, fileAuthor: string, fileDescription: string): Promise<{
+declare function getProjectSrcAppEnum(customFileName: string, fileAuthor: string, fileDescription: string): Promise<{
     PROJECT_APP_APP: {
         name: string;
         extension: string;
@@ -142,11 +141,6 @@ declare function getProjectStyleEnum(customFileName: string, fileAuthor: string,
         content: any;
     };
     PROJECT_STYLE_MIXINS: {
-        name: string;
-        extension: string;
-        content: any;
-    };
-    PROJECT_STYLE_SPINNER: {
         name: string;
         extension: string;
         content: any;

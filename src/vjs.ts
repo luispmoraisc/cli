@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+export { };
+
 const minimist = require('minimist');
 const generateProject = require('./project/generate');
 const generateComponent = require('./component/generate');

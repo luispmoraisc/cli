@@ -6,9 +6,8 @@ module.exports = (fileName: string, fileDescription: string, fileAuthor: string)
     "version": "0.0.1",
     "description": "${fileDescription}",
     "scripts": {
-        "local": "webpack-dev-server --watch --display-error-details --config ./config/webpack.dev --env=./.env --mode development --entryPoint=main",
+        "local": "webpack-dev-server --open --watch --display-error-details --config ./config/webpack.dev --env=./.env --mode development --entryPoint=main",
         "build": "rimraf dist && webpack --config ./config/webpack.prod --mode production --env=./.env --entryPoint=main",
-        "test": "./node_modules/.bin/karma start karma.config.js",
         "docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
     },
     "author": "${fileAuthor}",
@@ -24,7 +23,6 @@ module.exports = (fileName: string, fileDescription: string, fileAuthor: string)
         "clean-webpack-plugin": "^0.1.19",
         "css-loader": "^0.28.11",
         "core-js": "^2.0.0",
-        "cypress": "^3.0.3",
         "docdash": "^1.1.0",
         "dotenv-webpack": "^1.5.7",
         "eslint": "^5.5.0",
@@ -32,7 +30,6 @@ module.exports = (fileName: string, fileDescription: string, fileAuthor: string)
         "file-loader": "^1.1.11",
         "html-webpack-plugin": "^3.2.0",
         "istanbul-instrumenter-loader": "^3.0.1",
-        "jest": "^24.9.0",
         "jsdoc": "^3.6.1",
         "mini-css-extract-plugin": "^0.4.4",
         "node-sass": "^4.12.0",

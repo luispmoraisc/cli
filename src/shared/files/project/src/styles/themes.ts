@@ -2,20 +2,11 @@
 
 module.exports = () => {
     return `$themes: (
-    clear: (
-        primaryColorBrand: #0079BC,
-        secondColorBrand: #b8b1ac,     
-        spinnerColor: primaryColorBrand
+    dark: (
+        bgColorTheme: #000000
     ),
-    rico: (
-        primaryColorBrand: #ff5200,
-        secondColorBrand: #0f0e50,
-        spinnerColor: primaryColorBrand        
-    ),
-    xp:(        
-        primaryColorBrand: #FFC709,
-        secondColorBrand: #18191a,
-        spinnerColor: primaryColorBrand        
-    )
+    light: (
+        bgColorTheme: #ffffff
+    )    
 );`;
 };
