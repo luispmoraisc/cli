@@ -2,6 +2,14 @@
   "name": "VJSCLI",
   "version": "0.0.1",
   "description": "Vanilla JavaScript CLI",
+  "keywords": [
+    "cli",
+    "es6",
+    "ecmascript",
+    "vanilla",
+    "webpack",
+    "front end"
+  ],
   "main": "./src/index.js",
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
@@ -16,11 +24,15 @@
     "type": "git",
     "url": "https://github.com/lennonalvesdias/cli"
   },
-  "author": "Lennon Vinicius Alves Dias",
+  "author": "Luis Paulo Morais Cardoso",
+  "contributors": [
+    "Lennon Vinicius Alves Dias"
+  ],
   "license": "MIT",
   "bin": {
     "vjs": "./lib/index.js"
   },
+  "bugs": "https://github.com/luispmoraisc/cli/issues",
   "dependencies": {
     "axios": "^0.19.0",
     "chalk": "^2.4.2",
