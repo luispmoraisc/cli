@@ -1,6 +1,6 @@
 {
   "name": "vjscli",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Vanilla JavaScript CLI",
   "keywords": [
     "cli",
