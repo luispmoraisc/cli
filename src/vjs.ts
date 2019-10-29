@@ -19,11 +19,10 @@ module.exports = async (args: { slice: (arg0: number) => void; }) => {
     if (projectName) {
         await generateProject(projectName, authorName, description);
 
-        const spinner = ora(`Creating project and installing dependencies`).start();
+        const spinner = ora('Creating project and installing dependencies').start();
         
         await exec(`cd ${projectName} && git init && npm install`, function (error: Error, stdout: any, stderr: any) {
-            spinner.stop();
-            spinner.clear();
+            spinner.succeed('Project created and dependencies installed');
             if (error || stderr) console.log(error || stderr);
         });
     }
