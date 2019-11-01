@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 module.exports = () => {
-    return `const merge = require('webpack-merge');
+  return `const merge = require('webpack-merge');
 const dev = require('./webpack.dev');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
@@ -14,6 +14,7 @@ const dot = new Dotenv({
 
 
 module.exports = (env, args) => {
+    let ASSETS_URL = dot.definitions['process.env.ASSETS_URL'].replace(/[\\"]/g, '');
     let config = {
         plugins: [
             new UglifyJsPlugin({
@@ -30,6 +31,7 @@ module.exports = (env, args) => {
     }
 
     const develop = dev(env, args);
+    develop.output.publicPath = \`\${ASSETS_URL}\`;
     const mergeConfig = merge(develop, config);
     return mergeConfig;
 }`;
