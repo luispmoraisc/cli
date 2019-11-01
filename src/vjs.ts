@@ -6,7 +6,7 @@ const minimist = require('minimist');
 const generateProject = require('./project/generate');
 const generateComponent = require('./component/generate');
 const { exec } = require('child_process');
-const { Spinner } = require('cli-spinner');
+const ora = require('ora');
 
 module.exports = async (args: { slice: (arg0: number) => void; }) => {
     const argv = minimist(args.slice(2), { '--': true });
@@ -19,12 +19,16 @@ module.exports = async (args: { slice: (arg0: number) => void; }) => {
     if (projectName) {
         await generateProject(projectName, authorName, description);
 
-        const spinner = new Spinner('Installing dependencies');
-        spinner.start();
-        
+        const spinner = ora({
+            text: 'Creating project and installing dependencies',
+            spinner: 'dots',
+            color: 'red',
+            discardStdin: false
+        }).start();
+
         await exec(`cd ${projectName} && git init && npm install`, function (error: Error, stdout: any, stderr: any) {
-            // if (error || stderr) console.log(error || stderr);
-            spinner.stop();
+            spinner.succeed('Project created and dependencies installed');
+            if (error || stderr) console.log(error || stderr);
         });
     }
 
