@@ -25,6 +25,7 @@
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-rodando-o-cli-na-unha">Rodando o CLI na unha</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-licença">Licença</a>
 </p>
@@ -43,12 +44,8 @@ O Vanilla JavaScript CLI é um projeto que tem como intuíto disponibilizar uma 
 
 ### Instalação
 
-- Instalar as dependências (módulos) do projeto: `npm install`
-- Visualizar o CLI imediatamente: `npm start`
-- Executa o `build` e o `test` juntos: `npm run create` ou `npm run screate` (versão sudo)
-- Compilar o arquivo TypeScript `index.ts` em `index.js` e `index.d.ts`: `npm run build`
-- Instalar a CLI globalmente com `npm i -g` e disparando o CLI `vjs`: `npm run test` ou `npm run stest` (versão sudo)
-- Remove os módulos, o `package-lock.json` e executa o `npm install`: `npm run refresh`
+- Faça a instalação da CLI de maneira global na sua máquina: `npm install -g vjscli`
+- Verifique se foi instalado corretamente: `vjs -V`
 
 ### Gerar projeto/componente
 
@@ -57,11 +54,21 @@ O Vanilla JavaScript CLI é um projeto que tem como intuíto disponibilizar uma 
 - Criar novo projeto: `vjs -n <project_name> -a <author_name> -d <project_description>`
 - Criar novo componente: `vjs -g <component_name>`
 
-#### Execução no projeto criado
+#### Execução do projeto criado
 
 - Execução em desenvolvimento: `npm run local`
 - Build para deploy: `npm run build`
 - Gerar documentação: `npm run docs`
+
+## Rodando o CLI na unha 😅
+
+- Clone o projeto
+- Instalar as dependências (módulos) do projeto: `npm install`
+- Visualizar o CLI imediatamente: `npm start`
+- Executa o `build` e o `test` juntos: `npm run create` ou `npm run screate` (versão sudo)
+- Compilar o arquivo TypeScript `index.ts` em `index.js` e `index.d.ts`: `npm run build`
+- Instalar a CLI globalmente com `npm i -g` e disparando o CLI `vjs`: `npm run test` ou `npm run stest` (versão sudo)
+- Remove os módulos, o `package-lock.json` e executa o `npm install`: `npm run refresh`
 
 ## 🤔 Como contribuir
 
