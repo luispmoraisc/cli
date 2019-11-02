@@ -60,7 +60,7 @@ O Vanilla JavaScript CLI é um projeto que tem como intuíto disponibilizar uma 
 - Build para deploy: `npm run build`
 - Gerar documentação: `npm run docs`
 
-## Rodando o CLI na unha 😅
+## 😅 Rodando o CLI na unha
 
 - Clone o projeto
 - Instalar as dependências (módulos) do projeto: `npm install`
