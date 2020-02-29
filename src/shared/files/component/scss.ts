@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
 module.exports = () => {
-    return `// you need to @import this file on //<your_project>/src/styles/main.scss`;
-}
+  return `/* You need to import /assets/styles/index*/`;
+};
