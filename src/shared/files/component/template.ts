@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 module.exports = (name: any) => {
-    return `export default {
+  return `export default {
     ${name}() {
-        return //your template here;
+      return //your template here;
     }
 }`;
-}
+};

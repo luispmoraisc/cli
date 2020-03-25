@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 module.exports = (name: any) => {
-    let capitalize = firstChar(name);
-    return `import template from "./template.js";
-import "./${name}.scss";
+  let capitalize = firstChar(name);
+  return `import "./${name}.scss";
+import template from "./template.js";
 
 /**
 * @class ${capitalize}
@@ -11,16 +11,16 @@ import "./${name}.scss";
 */
 
 export default class ${capitalize} {
-    constructor() {
-        this._defaultSelector = "component-${name}";
-    }
+  constructor() {
+    this._defaultSelector = "component-${name}";
+  }
 
-    render() {
+  render() {
 
-    }
+  }
 }`;
-}
+};
 
 function firstChar(str: string) {
-    return str.charAt(0).toUpperCase() + str.substring(1, str.length);
+  return str.charAt(0).toUpperCase() + str.substring(1, str.length);
 }

@@ -3,36 +3,37 @@
 module.exports = () => {
   return `const merge = require('webpack-merge');
 const dev = require('./webpack.dev');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 const BrotliPlugin = require('brotli-webpack-plugin');
-const webpack = require('webpack');
-
-const dot = new Dotenv({
-    path: './.env'
-});
-
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = (env, args) => {
-    let ASSETS_URL = dot.definitions['process.env.ASSETS_URL'].replace(/[\\"]/g, '');
-    let config = {
-        plugins: [
-            new UglifyJsPlugin({
-                test: /\\.js($|\\?)/i
-            }),
-            new webpack.optimize.ModuleConcatenationPlugin(),
-            new BrotliPlugin({
-                asset : '[path].br[query]',
-                test : /\\.(js|css|html|svg)$/,
-                threshold : 10240,
-                minRatio : 0.8
-            })
-        ]
-    }
+  const configProd = {
+    mode: 'production',
+    plugins: [
+      new CompressionPlugin({
+        filename: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\\.(js|css|html|svg)$/,
+        threshold: 1024,
+        minRatio: 0.8,
+        cache: true,
+      }),
+      new BrotliPlugin({
+        asset: '[path].br[query]',
+        test: /\\.(js|css|html|svg)$/,
+        threshold: 1024,
+        minRatio: 0.8,
+      }),
+    ],
+    performance: {
+      hints: false,
+    },
+    devtool: false,
+  };
 
-    const develop = dev(env, args);
-    develop.output.publicPath = \`\${ASSETS_URL}\`;
-    const mergeConfig = merge(develop, config);
-    return mergeConfig;
-}`;
+  const configDev = dev(env, args);
+  const mergeConfig = merge(configDev, configProd);
+  return mergeConfig;
+};
+`;
 };

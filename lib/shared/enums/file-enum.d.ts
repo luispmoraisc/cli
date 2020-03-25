@@ -2,11 +2,16 @@
 declare const fileComponentClass: any;
 declare const fileComponentTemplate: any;
 declare const fileComponentScss: any;
-declare const fileProjectPackage: any;
-declare const fileProjectJsdoc: any;
-declare const fileProjectGitignore: any;
-declare const fileProjectReadme: any;
+declare const fileProjectBabelRC: any;
+declare const fileProjectEditorConfig: any;
 declare const fileProjectEnv: any;
+declare const fileProjectESLintIgnore: any;
+declare const fileProjectESLintRC: any;
+declare const fileProjectGitignore: any;
+declare const fileProjectJsdoc: any;
+declare const fileProjectPackage: any;
+declare const fileProjectPrettier: any;
+declare const fileProjectReadme: any;
 declare const fileProjectConfigSetEntry: any;
 declare const fileProjectConfigSetOptimization: any;
 declare const fileProjectConfigSetPlugins: any;
@@ -17,11 +22,12 @@ declare const fileProjectConfigWebpackRules: any;
 declare const fileProjectSrcIndex: any;
 declare const fileProjectSrcMain: any;
 declare const fileProjectSrcAppApp: any;
+declare const fileProjectSrcAppSass: any;
 declare const fileProjectSrcAppTemplate: any;
-declare const fileProjectSrcStyleMain: any;
+declare const fileProjectSrcStyleCommon: any;
+declare const fileProjectSrcStyleIndex: any;
 declare const fileProjectSrcStyleMixins: any;
-declare const fileProjectSrcStyleThemes: any;
-declare const fileProjectSrcStyleThemify: any;
+declare const fileProjectSrcStyleVariables: any;
 declare function getComponentEnum(customFileName: string, fileAuthor: string, fileDescription: string): Promise<{
     COMPONENT_CLASS: {
         name: null;
@@ -42,13 +48,38 @@ declare function getComponentEnum(customFileName: string, fileAuthor: string, fi
     };
 }>;
 declare function getProjectEnum(customFileName: string, fileAuthor: string, fileDescription: string): Promise<{
+    PROJECT_BABEL_RC: {
+        name: null;
+        extension: string;
+        content: any;
+    };
+    PROJECT_EDITOR_CONFIG: {
+        name: null;
+        extension: string;
+        content: any;
+    };
     PROJECT_ENV: {
+        name: null;
+        extension: string;
+        content: any;
+    };
+    PROJECT_ESLINT_IGNORE: {
+        name: null;
+        extension: string;
+        content: any;
+    };
+    PROJECT_ESLINT_RC: {
         name: null;
         extension: string;
         content: any;
     };
     PROJECT_GITIGNORE: {
         name: string;
+        extension: string;
+        content: any;
+    };
+    PROJECT_PRETTIER_RC: {
+        name: null;
         extension: string;
         content: any;
     };
@@ -131,11 +162,16 @@ declare function getProjectSrcAppEnum(customFileName: string, fileAuthor: string
     PROJECT_APP_SCSS: {
         name: string;
         extension: string;
-        content: string;
+        content: any;
     };
 }>;
 declare function getProjectStyleEnum(customFileName: string, fileAuthor: string, fileDescription: string): Promise<{
-    PROJECT_STYLE_MAIN: {
+    PROJECT_STYLE_COMMON: {
+        name: string;
+        extension: string;
+        content: any;
+    };
+    PROJECT_STYLE_INDEX: {
         name: string;
         extension: string;
         content: any;
@@ -145,12 +181,7 @@ declare function getProjectStyleEnum(customFileName: string, fileAuthor: string,
         extension: string;
         content: any;
     };
-    PROJECT_STYLE_THEMES: {
-        name: string;
-        extension: string;
-        content: any;
-    };
-    PROJECT_STYLE_THEMIFY: {
+    PROJECT_STYLE_VARIABLES: {
         name: string;
         extension: string;
         content: any;
